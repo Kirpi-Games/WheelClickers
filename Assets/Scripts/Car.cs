@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Security;
+using Akali.Scripts.Utilities;
 using DG.Tweening;
 using PathCreation.Examples;
 using TMPro;
@@ -26,7 +27,18 @@ public class Car : MonoBehaviour
     {
         SetLevel();
     }
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer.Equals(Constants.LayerPlayer))
+        {
+            if (other.gameObject.GetInstanceID() > GetInstanceID())
+            {
+                pathFollower.distanceTravelled -= Time.deltaTime*3;
+            }
+        }
+    }
+
 
     public void SetLevel()
     {

@@ -28,23 +28,13 @@ public class CarManager : Singleton<CarManager>
     {
         SetCarParkour();
     }
-    
-    public void SetIdleCarPos(Vector3 position)
-    {
-        for (int i = 0; i < cars.Count; i++)
-        {
-            cars[i].transform.position = new Vector3(position.x, position.y + i, position.z);
-        }
-    }
 
     public void SetCarParkour()
     {
         for (int i = 0; i < cars.Count; i++)
         {
             cars[i].GetComponent<PathFollower>().pathCreator = ParkourManager.Instance.currentParkour;
-            
         }
-        
     }
 
     public void SetCarSpeed(float speed)
@@ -54,7 +44,6 @@ public class CarManager : Singleton<CarManager>
             cars[i].SetSpeed(speed);
         }
     }
-    
 
     public void AddCar()
     {
@@ -62,7 +51,7 @@ public class CarManager : Singleton<CarManager>
         var carObj = AkaliPoolManager.Instance.Dequeue<Car>();
         carObj.transform.SetParent(transform);
         idleCarList.Add(carObj.GetComponent<Car>());
-        SetIdleCarPos(spawnIdlePos.transform.position);
+        carObj.transform.position = spawnIdlePos.transform.position;
         StartCoroutine(Spawner.Instance.SetCarIdleToParkour());
         
     }

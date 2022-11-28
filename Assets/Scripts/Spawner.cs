@@ -11,17 +11,15 @@ public class Spawner : Singleton<Spawner>
 {
     public bool canGoParkour;
 
-
-
     public IEnumerator SetCarIdleToParkour()
     {
         if (canGoParkour)
         {
             for (int i = 0; i < CarManager.Instance.idleCarList.Count; i++)
             {
-                CarManager.Instance.idleCarList[i].transform.DOMoveY(transform.position.y - 0.5f, 0.6f);
+                //CarManager.Instance.idleCarList[i].transform.DOMoveY(transform.position.y - 0.5f, 0.6f);
                 CarManager.Instance.cars.Add(CarManager.Instance.idleCarList[i]);
-                yield return new WaitForSeconds(0.4f);
+                 yield return new WaitForSeconds(0.4f);
                 CarManager.Instance.idleCarList[i].GetComponent<PathFollower>().pathCreator = ParkourManager.Instance.currentParkour;
                 CarManager.Instance.idleCarList.Remove(CarManager.Instance.idleCarList[i]);
                 CarManager.Instance.SetCarParkour();
