@@ -17,6 +17,7 @@ namespace Akali.Scripts.Utilities
         public const string PrefsMoney = "money";
         public const string PrefsHaptic = "haptic";
         public const string PrefsParkourLevel = "ParkourLevel";
+        
         public const string PrefsBuyCarLevel = "BuyCarLevel";
         public const string PrefsCarBuyAmount = "CarBuyAmount";
         public const string PrefsMergeCarLevel = "MergeCarLevel";
@@ -24,5 +25,8 @@ namespace Akali.Scripts.Utilities
         public const string PrefsCarSpeedLevel = "CarSpeedLevel";
         public const string PrefsCarSpeedAmount = "CarSpeedAmount";
         public const string PrefsCarSpeed = "CarSpeed";
+        
+        public const string PrefsCarDataList = "CarDataList";
+        
     }
 }

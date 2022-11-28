@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Car
   m_EditorClassIdentifier: 
   poolPrefab: {fileID: 2731044561793223570, guid: 0aa852f51290bad44b2b62d06f2936ab, type: 3}
-  poolCount: 1000
+  poolCount: 500

@@ -21,7 +21,6 @@ public class Car : MonoBehaviour
         pathFollower = GetComponent<PathFollower>();
     }
     
-    
 
     private void Start()
     {
@@ -36,8 +35,8 @@ public class Car : MonoBehaviour
             carLevelMesh[i].SetActive(false);
             carLevelMesh[carLevel].SetActive(true);
         }
-        income = income * (carLevel+1);
-        gainEffect.text = "+" + income.ToString();
+        income *= (carLevel+1);
+        gainEffect.text = "+" + income;
     }
     
     public void SetSpeed(float speed)
