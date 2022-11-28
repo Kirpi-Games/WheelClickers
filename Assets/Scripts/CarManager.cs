@@ -88,13 +88,16 @@ public class CarManager : Singleton<CarManager>
                 for (int j = 0; j <= 2; j++)
                 {
                     AkaliPoolManager.Instance.Enqueue<Car>(matchList[j].gameObject);
+                    matchList[j].transform.SetParent(AkaliPoolManager.Instance.transform);
                 }
                 //matchList.ForEach(obj => cars.Remove(obj));
                 var carObj = AkaliPoolManager.Instance.Dequeue<Car>();
                 carObj.transform.SetParent(transform);
-                carObj.GetComponent<Car>().carLevel = i + 1;
-                carObj.GetComponent<Car>().SetLevel();
-                idleCarList.Add(carObj.GetComponent<Car>());
+                var carScript = carObj.GetComponent<Car>();
+                carObj.GetComponent<PathFollower>().pathCreator = ParkourManager.Instance.currentParkour;
+                carScript.carLevel = i + 1;
+                carScript.SetLevel();
+                idleCarList.Add(carScript);
                 SetCarParkour();
                 canMerge = false;
                 StartCoroutine(Spawner.Instance.SetCarIdleToParkour());
