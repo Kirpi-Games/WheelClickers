@@ -59,7 +59,6 @@ public class Car : MonoBehaviour
 
     public void GainMoney()
     {
-        //gainEffect.transform.DOLookAt(-1 * Camera.main.transform.position, 0.8f);
         gainEffect.transform.DOScale(1.5f, 0.5f).OnComplete((() => gainEffect.transform.DOScale(0f, 0.3f)));
         gainEffect.transform.DOLocalMoveY(2.5f, 0.8f).OnComplete((() => gainEffect.transform.DOLocalMoveY(0f, 0.2f)));
     }
