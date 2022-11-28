@@ -32,9 +32,9 @@ public class Car : MonoBehaviour
     {
         if (other.gameObject.layer.Equals(Constants.LayerPlayer))
         {
-            if (other.gameObject.GetInstanceID() > GetInstanceID())
+            if (other.gameObject.GetInstanceID() < GetInstanceID())
             {
-                pathFollower.distanceTravelled -= Time.deltaTime*3;
+                pathFollower.distanceTravelled += Time.deltaTime*3;
             }
         }
     }

@@ -25,7 +25,7 @@ public class MergeCar : Singleton<MergeCar>
 
     public void SetButtonMoneyOnLevel()
     {
-        money = money + (moneyIncrease * PlayerPrefs.GetMergeCarLevel());
+        money += (moneyIncrease * PlayerPrefs.GetMergeCarLevel());
         SortString();
         PlayerPrefs.SetCarMergeAmount(money);
     }
@@ -100,7 +100,6 @@ public class MergeCar : Singleton<MergeCar>
     {
         if (PlayerPrefs.GetMoney() >= money && CarManager.Instance.canMerge)
         {
-            button.enabled = false;
             MoneyText.Instance.DecreaseMoney(money);
             PlayerPrefs.SetMergeCarLevel(PlayerPrefs.GetMergeCarLevel() + 1);
             PlayerController.Instance.MergeCars();

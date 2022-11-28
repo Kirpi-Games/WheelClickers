@@ -50,21 +50,21 @@ public class CarManager : Singleton<CarManager>
         GameObject spawnIdlePos = GameObject.FindGameObjectWithTag("SpawnIdlePos");
         var carObj = AkaliPoolManager.Instance.Dequeue<Car>();
         carObj.transform.SetParent(transform);
+        carObj.GetComponent<PathFollower>().pathCreator = ParkourManager.Instance.currentParkour;
         idleCarList.Add(carObj.GetComponent<Car>());
         carObj.transform.position = spawnIdlePos.transform.position;
-        StartCoroutine(Spawner.Instance.SetCarIdleToParkour());
-        
     }
 
     public void CheckMergeStatus()
     {
         for (int i = 1; i < 7; i++)
         {
-            var matchList = cars;
-            matchList.FindAll(match => match.GetComponent<Car>().carLevel == i).ToList();
-            if (matchList.Count >= 3)
+            var counter = cars.Count(x => x.GetComponent<Car>().carLevel.Equals(i));
+
+            if (counter >= 3)
             {
                 canMerge = true;
+                break;
             }
         }
     }
